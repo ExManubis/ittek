@@ -5,9 +5,9 @@ script, input_encoding, error = sys.argv # use cl-args for variables
 def main(language_file, encoding, errors):
     line = language_file.readline() # returns one line from file
 
-    if line:
+    if line: # if line contains data
         print_line(line, encoding, errors) # use print_line function
-        return main(language_file, encoding, errors)
+        return main(language_file, encoding, errors) # runs function again
     
 def print_line(line, encoding, errors):
     next_lang = line.strip() # remove whitespaces from line
