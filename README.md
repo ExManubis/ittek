@@ -1,1 +1,5 @@
-# ittek
+# ITTEK kode
+
+## Dependencies:
+- flask
+- matplotlib
