@@ -11,7 +11,7 @@ def main(language_file, encoding, errors):
     
 def print_line(line, encoding, errors):
     next_lang = line.strip() # remove whitespaces from line
-    raw_bytes = next_lang.encode(encoding, errors = errors) # encodes text utf-8
+    raw_bytes = next_lang.encode(encoding, errors=errors) # encodes text utf-8
     cooked_string = raw_bytes.decode(encoding, errors=errors) # decodes string
 
     print(raw_bytes, "<===>", cooked_string)
