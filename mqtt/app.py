@@ -3,6 +3,7 @@ import base64
 from io import BytesIO
 from flask import Flask, render_template
 from matplotlib.figure import Figure
+from get_kontor_dht11_data import get_kontor_data
 
 # FLASK
 ## Flask app
@@ -23,6 +24,7 @@ def kontor():
 
 # FUNCTIONS
 def kontor_temp():
+    timestamps, temp, hum = get_kontor_data()
     # Generate the figure **without using pyplot**.
     fig = Figure()
     ax = fig.subplots()
