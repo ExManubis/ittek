@@ -18,8 +18,8 @@ def get_kontor_data(number_of_rows):
         cur.execute(query)
         rows = cur.fetchmany(number_of_rows)
         for row in rows:
-            datetimes.append(row[0])
-            temperatures.append(row[1])
+            datetimes.append(row[1])
+            temperatures.append(row[2])
             humidities.append(row[3])
         return datetimes, temperatures, humidities
     except sqlite3.Error as sql_e:

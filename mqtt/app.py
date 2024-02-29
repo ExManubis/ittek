@@ -24,11 +24,12 @@ def kontor():
 
 # FUNCTIONS
 def kontor_temp():
-    timestamps, temp, hum = get_kontor_data()
+    timestamps, temp, hum = get_kontor_data(10)
+
     # Generate the figure **without using pyplot**.
     fig = Figure()
     ax = fig.subplots()
-    ax.plot([1, 2])
+    ax.plot(timestamps, temp)
     # Save it to a temporary buffer.
     buf = BytesIO()
     fig.savefig(buf, format="png")
@@ -37,10 +38,12 @@ def kontor_temp():
     return data
 
 def kontor_hum():
-      # Generate the figure **without using pyplot**.
+    timestamps, temp, hum = get_kontor_data(10)
+
+    # Generate the figure **without using pyplot**.
     fig = Figure()
     ax = fig.subplots()
-    ax.plot([2, 1])
+    ax.plot(timestamps, hum)
     # Save it to a temporary buffer.
     buf = BytesIO()
     fig.savefig(buf, format="png")
