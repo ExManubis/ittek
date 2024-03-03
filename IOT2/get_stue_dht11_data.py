@@ -5,7 +5,7 @@ from datetime import datetime
 
 # FUNCTIONS
 def get_stue_data(number_of_rows):
-    query = """SELECT * FROM stue;"""
+    query = """SELECT * FROM stue ORDER BY datetime DESC;"""
     datetimes = []
     temperatures = []
     humidities = []
@@ -14,7 +14,7 @@ def get_stue_data(number_of_rows):
         cur = conn.cursor()
         cur.execute(query)
         rows = cur.fetchmany(number_of_rows)
-        for row in rows:
+        for row in reversed(rows): # ældste først
             datetimes.append(row[1])
             temperatures.append(row[2])
             humidities.append(row[3])

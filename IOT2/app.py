@@ -16,10 +16,12 @@ def stue_temp():
     ax = fig.subplots()
     fig.subplots_adjust(bottom=0.3)
     ax.tick_params(axis='x', which='both', rotation=30)
+    ax.tick_params(axis='x', colors='blue') # timestamp text color
     ax.set_facecolor('#111') # indre ramme farve
     ax.plot(timestamps, temp, linestyle = 'dashed', c='#11f', linewidth='1.5', marker='o', mec='red', ms=10, mfc='yellow')
     ax.set_xlabel('Timestamps')
     ax.set_ylabel('Temperature C')
+    ax.spines['left'].set_color('blue')
     fig.patch.set_facecolor('#234')
     # Save it to a temporary buffer.
     buf = BytesIO()
@@ -33,7 +35,15 @@ def stue_hum():
     # Generate the figure **without using pyplot**.
     fig = Figure()
     ax = fig.subplots()
-    ax.plot(timestamps, hum)
+    fig.subplots_adjust(bottom=0.3)
+    ax.tick_params(axis='x', which='both', rotation=30)
+    ax.tick_params(axis='x', colors='blue') # timestamp text color
+    ax.set_facecolor('#111') # indre ramme farve
+    ax.plot(timestamps, hum, linestyle = 'dashed', c='#11f', linewidth='1.5', marker='o', mec='red', ms=10, mfc='yellow')
+    ax.set_xlabel('Timestamps')
+    ax.set_ylabel('Humidity')
+    ax.spines['left'].set_color('blue')
+    fig.patch.set_facecolor('#234')
     # Save it to a temporary buffer.
     buf = BytesIO()
     fig.savefig(buf, format="png")
