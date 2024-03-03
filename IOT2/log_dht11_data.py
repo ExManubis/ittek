@@ -6,9 +6,6 @@ from datetime import datetime
 from time import sleep
 
 print('Subscribe MQTT script running...')
-
-
-
 subscribe.callback(on_message_print, "paho/test/topic", hostname="20.13.128.184", userdata={"message_count": 0})
 
 # FUNCTIONS
@@ -18,7 +15,7 @@ def on_message_print(client, userdata, message):
     now = datetime.now()
     now = now.strftime('%d/%m/%y %H:%M:%S')
     data = (now, randint(0, 30), randint(0, 100))
-    
+
     try:
         conn = sqlite3.connect('database/sensor_data.db')
         cur = conn.cursor()
