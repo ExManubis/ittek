@@ -46,5 +46,6 @@ def log_stue_dht11():
         sleep(1)
 
 # SCRIPT
-create_table()
-log_stue_dht11()
+while True:
+    create_table()
+    log_stue_dht11()
