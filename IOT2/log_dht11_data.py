@@ -6,11 +6,9 @@ from datetime import datetime
 
 # FUNCTIONS
 def on_message_print(client, userdata, message):
-    print("%s %s" % (message.topic, message.payload))
     query = """INSERT INTO stue (datetime, temperature, humidity) VALUES(?, ?, ?)"""
     now = datetime.now()
     now = now.strftime('%d/%m/%y %H:%M:%S')
-    print(type(json.loads(message.payload.decode())))
     dht11_data = json.loads(message.payload.decode())
     data = (now, dht11_data['temperature'], dht11_data['humidity'])
 

@@ -10,8 +10,11 @@
 
 <!-- block content -->
 {% block content %}
+<meta http-equiv="refresh" content="5">
+<div class="fluid-content">
 <h1>Stue Dashboard</h1>
 <img class="img-fluid" src='data:image/png;base64,{{stue_temperature}}'/>
 <img class="img-fluid" src='data:image/png;base64,{{stue_humidity}}'/>
+</div>
 {% endblock %}
 <!-- END block content -->
