@@ -4,17 +4,16 @@
 
 <!-- block title -->
 {% block title %}
-   Stue 
+Stue
 {% endblock %}
 <!-- END block title -->
 
 <!-- block content -->
 {% block content %}
-<meta http-equiv="refresh" content="5">
 <div class="container">
-<h1>Stue Dashboard</h1>
-<img class="img-fluid" src='data:image/png;base64,{{stue_temperature}}'/>
-<img class="img-fluid" src='data:image/png;base64,{{stue_humidity}}'/>
+    <h1>Køkken Dashboard</h1>
+    <form action="/taend" method="POST"><button>Tænd Lys</button></form>
+    <form action="/sluk" method="POST"><button>Sluk Lys</button></form>
 </div>
 {% endblock %}
 <!-- END block content -->

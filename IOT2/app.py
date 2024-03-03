@@ -4,6 +4,7 @@ from io import BytesIO
 from matplotlib.figure import Figure
 from flask import Flask, render_template
 from get_stue_dht11_data import get_stue_data
+import paho.mqtt.publish as publish
 
 # FLASK APP
 app = Flask(__name__)
@@ -62,6 +63,20 @@ def stue():
     stue_temperature = stue_temp()
     stue_humidity = stue_hum()
     return render_template('stue.html', stue_temperature = stue_temperature, stue_humidity = stue_humidity)
+
+@app.route('/koekken')
+def koekken():
+    return render_template('koekken.html')
+
+@app.route('/taend', methods=['POST'])
+def taend():
+    publish.single("LED", "taend", hostname="20.13.128.184")
+    return render_template('koekken.html')
+
+@app.route('/sluk', methods=['POST'])
+def sluk():
+    publish.single("LED", "sluk", hostname="20.13.128.184")
+    return render_template('koekken.html')
 
 # SCRIPT
 app.run(debug=True)

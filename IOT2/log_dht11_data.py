@@ -38,10 +38,9 @@ def create_table():
         print(f'Error occured')
     finally:
         conn.close()
-    sleep(1)
 
 # SCRIPT
+create_table()
 while True:
     print('Subscribe MQTT script running...')
     subscribe.callback(on_message_print, "paho/test/topic", hostname="20.13.128.184", userdata={"message_count": 0})
-    log_stue_dht11()
