@@ -1,12 +1,8 @@
 # IMPORTS
 import sqlite3
 import paho.mqtt.subscribe as subscribe
-from random import randint
+import json
 from datetime import datetime
-from time import sleep
-
-print('Subscribe MQTT script running...')
-subscribe.callback(on_message_print, "paho/test/topic", hostname="20.13.128.184", userdata={"message_count": 0})
 
 # FUNCTIONS
 def on_message_print(client, userdata, message):
@@ -14,7 +10,9 @@ def on_message_print(client, userdata, message):
     query = """INSERT INTO stue (datetime, temperature, humidity) VALUES(?, ?, ?)"""
     now = datetime.now()
     now = now.strftime('%d/%m/%y %H:%M:%S')
-    data = (now, randint(0, 30), randint(0, 100))
+    print(type(json.loads(message.payload.decode())))
+    dht11_data = json.loads(message.payload.decode())
+    data = (now, dht11_data['temperature'], dht11_data['humidity'])
 
     try:
         conn = sqlite3.connect('database/sensor_data.db')
@@ -46,5 +44,6 @@ def create_table():
 
 # SCRIPT
 while True:
-    create_table()
+    print('Subscribe MQTT script running...')
+    subscribe.callback(on_message_print, "paho/test/topic", hostname="20.13.128.184", userdata={"message_count": 0})
     log_stue_dht11()
